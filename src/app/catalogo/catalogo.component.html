@@ -1,1 +1,12 @@
-<p>catalogo works!</p>
+<ul id="articulos-listado">
+  <li *ngFor="let item of _articulosList" class="articulo-item">
+    <img
+      [src]="item.urlImagen"
+      alt="Nombre de imagen"
+      class="articulo-imagen"
+    />
+    <span class="articulo-titulo"
+      >{{ item.nomArticulo }} <span>{{ item.precio | currency }}</span>
+    </span>
+  </li>
+</ul>

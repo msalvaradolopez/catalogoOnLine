@@ -25,7 +25,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/catalogoMobile.css"
+              "src/assets/catalogoMobile.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
