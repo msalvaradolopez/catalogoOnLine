@@ -12,9 +12,25 @@ import { environment } from "../environments/environment";
 export class ServiciosService {
 
   apiURL: string = environment.apiURL;
+
+  private _buscar = new Subject<string>();
+  buscar$ = this._buscar.asObservable();
+
+  private _menuTopIconos = new Subject<string>();
+  menuTopIconos$ = this._menuTopIconos.asObservable();
+
   constructor(private _http: HttpClient, private _router: Router) { }
 
   wsGeneral(ws: string, param: any ): Observable<any> {
     return this._http.post(this.apiURL + "/" + ws, param);
   }
+
+  buscar(buscar: string) {
+    this._buscar.next(buscar);
+  }
+
+  menuTopIconos(iconos: any) {
+    this._menuTopIconos.next(iconos);
+  }
+
 }

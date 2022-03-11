@@ -1,5 +1,5 @@
 <header id="topmenu">
-  <i class="fa-solid fa-bars fa-2x"></i>
+  <i *ngIf="_menuTopiconos.barras" class="fa-solid fa-bars fa-2x"></i>
   <nav>
     <ul>
       <li>
@@ -19,17 +19,31 @@
       </li>
     </ul>
   </nav>
-  <div class="search-wrapper">
+  <div *ngIf="_menuTopiconos.buscar" class="search-wrapper">
     <form>
       <input
+        id="buscar"
         type="text"
         name="focus"
         required
         class="search-box"
-        placeholder="Enter search term"
+        placeholder="buscar..."
+        (keyup)="onKeypressEvent($event)"
       />
     </form>
   </div>
-  <i class="fa-solid fa-magnifying-glass fa-2x"></i>
-  <i *ngIf="false" class="fa-solid fa-arrow-rotate-left fa-2x"></i>
+  <i
+    *ngIf="_menuTopiconos.lupa"
+    (click)="accionLupa()"
+    class="fa-solid fa-magnifying-glass fa-2x"
+  ></i>
+  <i
+    *ngIf="_menuTopiconos.cerrar"
+    (click)="accionCerrar()"
+    class="fa-solid fa-xmark fa-2x"
+  ></i>
+  <i
+    *ngIf="_menuTopiconos.regresar"
+    class="fa-solid fa-arrow-rotate-left fa-2x"
+  ></i>
 </header>
