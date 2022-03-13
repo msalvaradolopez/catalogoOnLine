@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ServiciosService } from '../servicios.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria',
@@ -14,13 +15,13 @@ export class CategoriaComponent implements OnInit {
   _categoriasList: any = [];
   _nomCategoria: string = "";
 
-  _subscription: Subscription;
 
-  constructor(private _servicios: ServiciosService, private _toastr: ToastrService) { }
+  constructor(private _servicios: ServiciosService, private _toastr: ToastrService, private _router: Router) { }
 
   ngOnInit(): void {
     // ACTIVA ICONOS DEL MENU TOP
-    this._servicios.menuTopIconos({barras: true, buscar: false, lupa: false, cerrar: false, regresar: true})
+    // ACTIVA ICONOS DEL MENU TOP
+    this._servicios.menuTopIconos({menu: true, titulo: true, buscar: false, cerrar: false, regresar: false, config: true, valorTitulo: ""})
     
     this._idEmpresa = parseInt(sessionStorage.getItem("idEmpresa"));
 
@@ -34,4 +35,11 @@ export class CategoriaComponent implements OnInit {
         this._categoriasList = x;
       }, error => this._toastr.error("Error : " + error.error.ExceptionMessage, "Categorías"));
   }
+
+  catalogoByCat (idCategoria: string) {
+    sessionStorage.setItem("idCategoria", idCategoria)
+    this._router.navigate(['/catalogobycat']) ;
+  }
+
+
 }

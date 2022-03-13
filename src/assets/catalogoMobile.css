@@ -19,7 +19,7 @@ body {
 
   font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 14px;
+  font-size: 16px;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -150,7 +150,7 @@ ul li span {
   width: auto;
   height: 50px;
   background-color: #25d366;
-  color: #075e54;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -204,7 +204,15 @@ ul li span {
 
 /* CATALOGO DE ARTICULOS */
 /*elemento lista ul*/
-#articulos-listado {
+.articuloslistadoDosCol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  padding: 10px;
+  grid-gap: 10px;
+}
+
+.articuloslistadoTresCol {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 150px;
@@ -218,21 +226,50 @@ ul li span {
   text-align: left;
 }
 
-.articulo-titulo {
-  position: absolute;
-  bottom: 0;
-  color: white;
-  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
-  width: 90%;
-  padding: 140% 0px 10% 10px;
-  border-radius: 5%;
-}
-
 .articulo-imagen {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5%;
+}
+
+.overlay {
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  border-radius: 5%;
+}
+
+.articulo-titulo {
+  font-family: Roboto;
+  font-size: large;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));*/
+  width: 95%;
+  padding: 10%;
+  border-radius: 5%;
+  z-index: 2;
+}
+
+.articulo-tituloTresCol {
+  font-family: Roboto;
+  font-size: large;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));*/
+  width: 95%;
+  padding: 10px;
+  border-radius: 5%;
+  z-index: 2;
 }
 
 /* CATEGORIAS */
@@ -252,13 +289,16 @@ ul li span {
 }
 
 .categoria-titulo {
+  font-family: Roboto;
+  font-size: large;
   position: absolute;
   bottom: 0;
   color: white;
-  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));
-  width: 90%;
-  padding: 120px 0px 10% 10px;
+  /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5));*/
+  width: 95%;
+  padding: 10%;
   border-radius: 5%;
+  z-index: 2;
 }
 
 .categoria-imagen {
@@ -266,6 +306,21 @@ ul li span {
   height: 100%;
   object-fit: cover;
   border-radius: 5%;
+}
+
+.letra-lg {
+  font-family: Roboto;
+  font-size: large;
+  padding: 5%;
+}
+
+.valor-titulo {
+  font-family: Roboto;
+  font-size: larger;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /*Responsive Styles*/
@@ -292,14 +347,24 @@ ul li span {
     height: 85vh;
   }
 
-  #articulos-listado {
+  .articuloslistadoDosCol {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 230px;
   }
 
+  .articuloslistadoTresCol {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+  }
+
   .articulo-titulo {
-    width: 100%;
-    padding: 100% 0px 10% 10px;
+    width: 90%;
+    padding: 10%;
+  }
+
+  .articulo-tituloTresCol {
+    width: 90%;
+    padding: 10%;
   }
 }
 
@@ -325,14 +390,24 @@ ul li span {
     height: 86vh;
   }
 
-  #articulos-listado {
+  .articuloslistadoDosCol {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 230px;
   }
 
+  .articuloslistadoTresCol {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+  }
+
   .articulo-titulo {
-    width: 100%;
-    padding: 100% 0px 10% 10px;
+    width: 90%;
+    padding: 10%;
+  }
+
+  .articulo-tituloTresCol {
+    width: 90%;
+    padding: 10%;
   }
 }
 

@@ -13,6 +13,8 @@ export class AppComponent implements OnInit{
   constructor(private _router: Router) {}
 
   ngOnInit(): void {
+    sessionStorage.setItem("nomEmpresa", "Mi Tienda")
+
     this._router.navigate["catalogo"] ;
 
     sessionStorage.setItem("idEmpresa", "1");

@@ -1,10 +1,15 @@
 <ul id="categorias-listado">
-  <li *ngFor="let item of _categoriasList" class="categoria-item">
+  <li
+    *ngFor="let item of _categoriasList"
+    class="categoria-item"
+    (click)="catalogoByCat(item.idCategoria)"
+  >
     <img
       [src]="item.urlImagen"
       alt="Nombre de imagen"
       class="categoria-imagen"
     />
+    <div class="overlay"></div>
     <span class="categoria-titulo">{{ item.idCategoria }}</span>
   </li>
 </ul>

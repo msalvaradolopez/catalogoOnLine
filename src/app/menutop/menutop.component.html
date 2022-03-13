@@ -1,5 +1,5 @@
 <header id="topmenu">
-  <i *ngIf="_menuTopiconos.barras" class="fa-solid fa-bars fa-2x"></i>
+  <i *ngIf="_menuTopiconos.menu" class="fa-solid fa-bars"></i>
   <nav>
     <ul>
       <li>
@@ -19,7 +19,17 @@
       </li>
     </ul>
   </nav>
-  <div *ngIf="_menuTopiconos.buscar" class="search-wrapper">
+  <i
+    *ngIf="_menuTopiconos.regresar"
+    class="fa-solid fa-angle-left"
+    (click)="accionRegresar()"
+  >
+    <span class="letra-lg">Atrás</span></i
+  >
+  <span *ngIf="_menuTopiconos.titulo" class="valor-titulo">{{
+    _valorTitulo
+  }}</span>
+  <div *ngIf="_inputBuscar" class="search-wrapper">
     <form>
       <input
         id="buscar"
@@ -33,17 +43,14 @@
     </form>
   </div>
   <i
-    *ngIf="_menuTopiconos.lupa"
+    *ngIf="_menuTopiconos.buscar"
     (click)="accionLupa()"
-    class="fa-solid fa-magnifying-glass fa-2x"
+    class="fa-solid fa-magnifying-glass"
   ></i>
   <i
     *ngIf="_menuTopiconos.cerrar"
     (click)="accionCerrar()"
     class="fa-solid fa-xmark fa-2x"
   ></i>
-  <i
-    *ngIf="_menuTopiconos.regresar"
-    class="fa-solid fa-arrow-rotate-left fa-2x"
-  ></i>
+  <i *ngIf="_menuTopiconos.config" class="fa-solid fa-ellipsis"></i>
 </header>

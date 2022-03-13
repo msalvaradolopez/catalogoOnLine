@@ -2,7 +2,7 @@
   <li
     *ngFor="let item of _articulosList"
     class="articulo-item"
-    (click)="articuloVenta(item)"
+    (click)="articuloVenta(item.idArticulo)"
   >
     <img
       [src]="item.urlImagen"
