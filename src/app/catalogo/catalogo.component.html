@@ -4,14 +4,20 @@
     class="articulo-item"
     (click)="articuloVenta(item)"
   >
-    <img
-      [src]="item.urlImagen"
-      alt="Nombre de imagen"
-      class="articulo-imagen"
-    />
-    <div class="overlay"></div>
-    <span [ngClass]="_classArticuloTituloDosCol"
-      >{{ item.nomArticulo }} <span>{{ item.precio | currency }}</span>
-    </span>
+    <div
+      *ngFor="let imagen of item.imagenes"
+      class="articulo-contendor-imagen-catalogo"
+    >
+      <img
+        *ngIf="imagen.principal == 'S'"
+        [src]="transform(imagen.urlImagen)"
+        alt="imagen.nomImagen"
+        class="articulo-imagen"
+      />
+      <div class="overlay"></div>
+      <span [ngClass]="_classArticuloTituloDosCol"
+        >{{ item.nomArticulo }} <span>{{ item.precio | currency }}</span>
+      </span>
+    </div>
   </li>
 </ul>

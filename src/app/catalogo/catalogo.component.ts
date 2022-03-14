@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Iarticulo } from '../imodelo-db';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-catalogo',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class CatalogoComponent implements OnInit, OnDestroy {
 
   _idEmpresa: number = 0;
-  _articulosList: any = [];
+  _articulosList: Iarticulo[] = [];
   _nomArticulo: string = "";
   _classDosColumnas: string = "articuloslistadoDosCol";
   _classArticuloTituloDosCol: string = "articulo-titulo";
@@ -21,12 +22,12 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   _subscription: Subscription;
   _subScrDosColumnas: Subscription;
 
-  constructor(private _servicios: ServiciosService, private _toastr: ToastrService, private _router: Router) { }
+  constructor(private _servicios: ServiciosService, private _toastr: ToastrService, private _router: Router, private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
 
     // ACTIVA ICONOS DEL MENU TOP
-    this._servicios.menuTopIconos({menu: true, titulo: true, buscar: false, cerrar: false, regresar: false, config: true, valorTitulo: ""})
+    this._servicios.menuTopIconos({menu: true, titulo: true, buscar: true, cerrar: false, regresar: false, config: true, valorTitulo: ""})
 
     this._idEmpresa = parseInt(sessionStorage.getItem("idEmpresa"));
 
@@ -64,6 +65,11 @@ export class CatalogoComponent implements OnInit, OnDestroy {
     this._classDosColumnas = accion ? "articuloslistadoDosCol" : "articuloslistadoTresCol";
     this._classArticuloTituloDosCol = accion ? "articulo-titulo" : "articulo-tituloTresCol";
   }
+
+  //Call this method in the image source, it will sanitize it.
+  transform(base64Image: string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(base64Image);
+  }  
 
   ngOnDestroy() {
       this._subscription.unsubscribe();

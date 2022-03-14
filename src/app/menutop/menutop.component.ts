@@ -45,16 +45,16 @@ export class MenutopComponent implements OnInit, OnDestroy {
 
 
   accionLupa() {
-    this._menuTopiconos.buscar = true;
+    this._menuTopiconos.buscar = false;
     this._menuTopiconos.cerrar = true;
-    this._menuTopiconos.nomEmpresa = false;
+    this._menuTopiconos.titulo = false;
     this._inputBuscar = true;
   }
 
   accionCerrar() {
-    this._menuTopiconos.buscar = false;
+    this._menuTopiconos.buscar = true;
     this._menuTopiconos.cerrar = false;
-    this._menuTopiconos.nomEmpresa = true;
+    this._menuTopiconos.titulo = true;
     this._inputBuscar = false;
     this._servicios.buscar("");
   }

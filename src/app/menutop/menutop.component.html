@@ -30,7 +30,6 @@
     _valorTitulo
   }}</span>
   <div *ngIf="_inputBuscar" class="search-wrapper">
-    <form>
       <input
         id="buscar"
         type="text"
@@ -40,7 +39,6 @@
         placeholder="buscar..."
         (keyup)="onKeypressEvent($event)"
       />
-    </form>
   </div>
   <i
     *ngIf="_menuTopiconos.buscar"
@@ -50,7 +48,7 @@
   <i
     *ngIf="_menuTopiconos.cerrar"
     (click)="accionCerrar()"
-    class="fa-solid fa-xmark fa-2x"
+    class="fa-solid fa-xmark"
   ></i>
   <i *ngIf="_menuTopiconos.config" class="fa-solid fa-ellipsis"></i>
 </header>

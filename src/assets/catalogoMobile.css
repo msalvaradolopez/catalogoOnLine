@@ -183,7 +183,7 @@ ul li span {
 }
 
 .search-wrapper {
-  /*width: 500px;*/
+  width: 350px;
   /* margin: auto; */
 }
 
@@ -192,7 +192,7 @@ ul li span {
 }
 
 .search-box {
-  /*width: 80%;*/
+  width: 100%;
   border: 1px solid #ccc;
   outline: 0;
   border-radius: 15px;
@@ -200,6 +200,13 @@ ul li span {
 .search-box:focus {
   box-shadow: 0 0 15px 5px #b0e0ee;
   border: 2px solid #bebede;
+}
+
+/* ARTICULO */
+.articulo {
+  display: grid;
+  flex-direction: column;
+  padding: 10px;
 }
 
 /* CATALOGO DE ARTICULOS */
@@ -226,9 +233,28 @@ ul li span {
   text-align: left;
 }
 
-.articulo-imagen {
+.articulo-contendor-imagen-catalogo {
+  position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 5%;
+}
+
+.articulo-contendor-imagen {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  border-radius: 5%;
+}
+
+.articulo-imagen {
+  position: absolute;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 5%;
 }
@@ -321,6 +347,40 @@ ul li span {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
+  width: 350px;
+}
+
+.desc-articulo {
+  font-family: Roboto;
+  font-size: larger;
+  color: black;
+  text-align: left;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  width: 100%;
+  padding: 10px;
+}
+
+.unidades-articulo {
+  font-family: Roboto;
+  font-size: large;
+  color: black;
+  text-align: left;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  width: 100%;
+  padding: 10px;
+}
+
+.marcas-articulo {
+  font-family: Roboto;
+  font-size: large;
+  color: black;
+  text-align: left;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  width: 100%;
+  padding: 10px;
 }
 
 /*Responsive Styles*/

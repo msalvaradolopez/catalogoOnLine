@@ -20,7 +20,6 @@ export class CategoriaComponent implements OnInit {
 
   ngOnInit(): void {
     // ACTIVA ICONOS DEL MENU TOP
-    // ACTIVA ICONOS DEL MENU TOP
     this._servicios.menuTopIconos({menu: true, titulo: true, buscar: false, cerrar: false, regresar: false, config: true, valorTitulo: ""})
     
     this._idEmpresa = parseInt(sessionStorage.getItem("idEmpresa"));
