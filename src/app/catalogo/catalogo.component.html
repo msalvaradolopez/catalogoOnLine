@@ -1,3 +1,4 @@
+<!--
 <ul [ngClass]="_classDosColumnas">
   <li
     *ngFor="let item of _articulosList"
@@ -21,3 +22,37 @@
     </div>
   </li>
 </ul>
+style="background-image: url('https://picsum.photos/id/65/900/900.jpg')"
+[ngStyle]="{ 'background-image': 'url(' + item.urlImagen + ')' }"
+
+<div class="overlay"></div>
+    <span
+      >{{ item.nomArticulo }} <span>{{ item.precio | currency }}</span>
+    </span>
+
+    *ngIf="imagen.principal == 'S'"
+        class="grid-item tall"
+        [ngStyle]="{ 'background-image': ' url(' + imagen.urlImagen + ')' }"
+        [ngStyle]="transform(item.imagenes)"
+        [style.background-image]="
+      'url(&quot;' + transform(item.imagenes) + '&quot;)'
+    "
+-->
+
+<div class="grid-container">
+  <div
+    *ngFor="let item of _articulosList"
+    class="grid-item tall"
+    [ngStyle]="{
+      'background-image': 'url(\'' + transform(item.imagenes) + '\')'
+    }"
+    (click)="articuloVenta(item)"
+  >
+    <div class="overlay"></div>
+    <div class="articulo-titulo">
+      <span
+        >{{ item.nomArticulo }} <span>{{ item.precio | currency }}</span>
+      </span>
+    </div>
+  </div>
+</div>

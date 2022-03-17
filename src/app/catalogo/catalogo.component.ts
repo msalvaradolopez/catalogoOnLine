@@ -3,6 +3,7 @@ import { ServiciosService } from '../servicios.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Iarticulo } from '../imodelo-db';
+import { Iimagen } from '../imodelo-db';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -66,9 +67,16 @@ export class CatalogoComponent implements OnInit, OnDestroy {
     this._classArticuloTituloDosCol = accion ? "articulo-titulo" : "articulo-tituloTresCol";
   }
 
-  //Call this method in the image source, it will sanitize it.
-  transform(base64Image: string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(base64Image);
+   //Call this method in the image source, it will sanitize it.
+   transform(imagenes: Iimagen[]){
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(base64Image);
+    let urlImagen: string = ""
+    let imagenPrincipal: Iimagen [] = imagenes.filter(x => x.principal == "S");
+
+    if (imagenPrincipal.length > 0 )
+      urlImagen = imagenPrincipal[0].urlImagen;
+      
+    return urlImagen;
   }  
 
   ngOnDestroy() {

@@ -1,3 +1,6 @@
+<!--
+
+
 <ul id="categorias-listado">
   <li
     *ngFor="let item of _categoriasList"
@@ -13,3 +16,23 @@
     <span class="categoria-titulo">{{ item.idCategoria }}</span>
   </li>
 </ul>
+
+--- este es el bueno
+    [ngStyle]="{
+      'background-image': 'url(\'' + transform(item.imagenes) + '\')'
+    }"
+-->
+<div class="grid-container-tres-columnas-cat">
+  <div
+    *ngFor="let item of _categoriasList"
+    class="grid-item-cat tall-cat"
+    [ngStyle]="{
+      'background-image': 'url(\'' + transform(item.imagenes) + '\')'
+    }"
+  >
+    <div class="overlay-cat"></div>
+    <div class="articulo-titulo-cat">
+      <span>{{ item.idCategoria }} </span>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,10 @@
             "styles": [
               "src/styles.css",
               "src/assets/catalogoMobile.css",
+              "src/assets/responsive.css",
+              "src/assets/catalogos.css",
+              "src/assets/categorias.css",
+              "src/assets/articuloVenta.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []

@@ -3,8 +3,10 @@ import { ServiciosService } from '../servicios.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { Iarticulo } from '../imodelo-db';
+import { Iarticulo, Icarrito } from '../imodelo-db';
+import { Iimagen } from '../imodelo-db';
 import { DomSanitizer } from '@angular/platform-browser';
+import { VentaAcciones } from '../venta-acciones';
 
 @Component({
   selector: 'app-articuloventa',
@@ -14,7 +16,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ArticuloventaComponent implements OnInit, OnDestroy {
 
   _articulo: Iarticulo;
+  _carrito: Icarrito[];
   _subIconosAcciones:  Subscription;
+
 
   _nombreTipo: string = "";
 
@@ -22,8 +26,8 @@ export class ArticuloventaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // SE OBTIENEN VARIABLES DEL STORAGE
     this._articulo = JSON.parse(sessionStorage.getItem("articuloVenta"));
+
     if (this._articulo.tipo == "N")
     this._nombreTipo = "Nuevo";
 
@@ -45,10 +49,36 @@ export class ArticuloventaComponent implements OnInit, OnDestroy {
        });
   }
 
-   //Call this method in the image source, it will sanitize it.
-   transform(base64Image: string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(base64Image);
-  }  
+  //Call this method in the image source, it will sanitize it.
+  transform(imagenes: Iimagen[]){
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(base64Image);
+    let urlImagen: string = ""
+    let imagenPrincipal: Iimagen [] = imagenes.filter(x => x.principal == "S");
+
+    if (imagenPrincipal.length > 0 )
+      urlImagen = imagenPrincipal[0].urlImagen;
+
+
+      console.log(urlImagen);
+      return urlImagen;
+  }    
+
+  addCarrito(articulo: Iarticulo) {
+
+    /// BOTENER EL CARRITO DE LA SESSION
+    this._carrito = JSON.parse(sessionStorage.getItem("_carrito"));
+    if (!this._carrito) 
+        this._carrito = [];    
+
+    let addCarritoAccion = new VentaAcciones(articulo, this._carrito);
+
+    this._carrito = addCarritoAccion.addCarrito(5);
+    console.log("informacion del carrito.");
+    console.log(this._carrito);
+    // ASIGNA EL NUEVO VALOR DEL CARRITO A LA SESSION
+    sessionStorage.setItem("_carrito", JSON.stringify(this._carrito));
+
+  }
 
   ngOnDestroy(): void {
     this._subIconosAcciones.unsubscribe();

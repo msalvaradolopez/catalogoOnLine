@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
   constructor(private _router: Router) {}
 
   ngOnInit(): void {
-    sessionStorage.setItem("nomEmpresa", "Mi Tienda")
+    sessionStorage.setItem("nomEmpresa", "Trade Latino")
 
     this._router.navigate["catalogo"] ;
 

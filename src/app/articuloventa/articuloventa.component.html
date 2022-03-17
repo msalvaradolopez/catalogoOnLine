@@ -1,19 +1,18 @@
+<!--
 <div class="articulo">
   <div
-    *ngFor="let imagen of _articulo.imagenes"
-    class="articulo-contendor-imagen"
+    class="grid-item-articulo tall-articulo-venta"
+    [ngStyle]="{
+      'background-image': 'url(\'' + transform(_articulo.imagenes) + '\')'
+    }"
   >
-    <img
-      *ngIf="imagen.principal == 'S'"
-      [src]="transform(imagen.urlImagen)"
-      alt="imagen.nomImagen"
-      class="articulo-imagen"
-    />
     <div class="overlay"></div>
-    <span class="articulo-titulo">
-      {{ _articulo.nomArticulo }}
-      <span>{{ _articulo.precio | currency }}</span>
-    </span>
+    <div class="articulo-titulo">
+      <span
+        >{{ _articulo.nomArticulo }}
+        <span>{{ _articulo.precio | currency }}</span>
+      </span>
+    </div>
   </div>
   <hr />
   <div class="desc-articulo">
@@ -41,5 +40,53 @@
     <span>
       {{ _nombreTipo }}
     </span>
+  </div>
+</div>
+
+
+-->
+
+<div class="articulo">
+  <div
+    class="grid-item-articulo tall-articulo-venta"
+    [ngStyle]="{
+      'background-image': 'url(\'' + transform(_articulo.imagenes) + '\')'
+    }"
+  >
+    <div class="overlay"></div>
+    <div class="articulo-titulo">
+      <span>{{ _articulo.nomArticulo }} </span>
+      <span>{{ _articulo.precio | currency }}</span>
+    </div>
+  </div>
+  <hr />
+  <div class="desc-articulo">
+    <p>
+      {{ _articulo.descripcion }}
+    </p>
+  </div>
+  <hr />
+  <div class="unidades-articulo">
+    <span> unidad: </span>
+    <span>
+      {{ _articulo.idUnidad }}
+    </span>
+  </div>
+  <hr />
+  <div class="marcas-articulo">
+    <span> marca: </span>
+    <span>
+      {{ _articulo.idMarca }}
+    </span>
+  </div>
+  <hr />
+  <div class="marcas-articulo">
+    <span> Estado: </span>
+    <span>
+      {{ _nombreTipo }}
+    </span>
+  </div>
+  <div>
+    <button (click)="addCarrito(_articulo)">Agregar a carrito</button>
   </div>
 </div>

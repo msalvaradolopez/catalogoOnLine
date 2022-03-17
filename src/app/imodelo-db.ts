@@ -22,6 +22,13 @@ export interface Iarticulo {
 export interface Ipedido {
     idPedido: number;
     nomCliente: string;
+    carrito: Icarrito;
+}
+
+export interface Icarrito {
+    articulo: Iarticulo;
+    cantidad: number;
+
 }
 
 
